@@ -3,7 +3,8 @@
 FROM rust:1.57.0
 
 # Add Google Protocol Buffers for Libra's metrics library.
-ENV PROTOC_VERSION 3.19.1TOC_VERSION-linux-x86_64.zip
+ENV PROTOC_VERSION 3.19.1
+ENV PROTOC_ZIP protoc-$PROTOC_VERSION-linux-x86_64.zip
 
 RUN set -x \
  && apt update \
