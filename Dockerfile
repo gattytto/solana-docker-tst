@@ -25,8 +25,7 @@ RUN set -x \
       rsync \
       sudo \
       golang \
-      unzip \
-      \
+      unzip 
  && apt remove -y libcurl4-openssl-dev \
  && rm -rf /var/lib/apt/lists/* \
  && node --version \
