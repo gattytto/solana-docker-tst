@@ -21,6 +21,6 @@ WORKDIR /
 # Import from builder.
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
-COPY --from=builder /solana/target ./
+COPY --from=builder /solana/target/release ./
 USER rust:rust
 
