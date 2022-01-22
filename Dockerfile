@@ -12,10 +12,13 @@ RUN adduser \
     --uid "${UID}" \
     "${USER}"
 
-RUN export DEBIAN_FRONTEND=noninteractive && rustup component add rustfmt && apt-get install -y --no-install-recommends tzdata && apt update && apt install -y libssl-dev libudev-dev pkg-config zlib1g-dev llvm clang make git && \
+RUN export DEBIAN_FRONTEND=noninteractive && rustup component add rustfmt && apt-get install -y --no-install-recommends tzdata libudev-dev && apt update && apt install -y libssl-dev libudev-dev pkg-config zlib1g-dev llvm clang make git && \
     git clone https://github.com/solana-labs/solana.git && cd solana && \
     cargo build --release && \
-    ls -alh target
+    ls -alh target && cd .. && \
+    git clone https://github.com/solana-labs/solana-program-library.git && 
+    cd solana-program-library && \
+    cargo build-bpf && ls -alh
 FROM scratch
 WORKDIR /
 # Import from builder.
