@@ -16,7 +16,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && rustup component add rustfmt && apt
     git clone https://github.com/solana-labs/solana.git && cd solana && \
     cargo build --release && \
     ls -alh target && cd .. && \
-    git clone https://github.com/solana-labs/solana-program-library.git && 
+    git clone https://github.com/solana-labs/solana-program-library.git && \
     cd solana-program-library && \
     cargo build-bpf && ls -alh
 FROM scratch
