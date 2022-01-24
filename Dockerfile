@@ -1,6 +1,6 @@
 FROM quay.io/gattytto/rust:latest as builder
 # Create appuser
-
+USER root
 RUN rustup toolchain add $RUST_VERSION; \
     export DEBIAN_FRONTEND=noninteractive; \
     rustup component add rustfmt; \
