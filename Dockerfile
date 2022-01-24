@@ -8,9 +8,10 @@ RUN rustup toolchain add $RUST_VERSION; \
     apt update && apt install -y libssl-dev libudev-dev pkg-config zlib1g-dev llvm clang make git; \
     git clone https://github.com/solana-labs/solana.git && cd solana; \
     cargo build --release; \
+    cd .. ; \
     git clone https://github.com/solana-labs/solana-program-library.git; \
     cd solana-program-library && export PATH=/solana/target/release:$PATH; \
-    cargo build-bpf --bpf-sdk /solana/sdk/bpf 
+    cargo build-bpf --bpf-sdk /solana/sdk/bpf && ls solana-program-library/target
     
 FROM scratch
 WORKDIR /
