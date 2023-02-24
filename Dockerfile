@@ -1,7 +1,8 @@
 FROM quay.io/gattytto/rust:latest as builder
 # Create appuser
 USER root
-RUN apt install -y --no-install-recommends git
+RUN apt install -y --no-install-recommends git && \
+    echo "precedence ::ffff:0:0/96  100" >> /etc/gai.conf 
 
 RUN git clone https://github.com/solana-labs/solana.git; \
     git clone https://github.com/solana-labs/solana-program-library.git; 
