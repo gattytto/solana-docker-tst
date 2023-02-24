@@ -9,8 +9,7 @@ RUN git clone https://github.com/solana-labs/solana.git; \
 RUN rustup toolchain add $RUST_VERSION; \
     export DEBIAN_FRONTEND=noninteractive; \
     rustup component add rustfmt; \
-    apt-get install -y --no-install-recommends tzdata libudev-dev; \
-    apt install -y --no-install-recommends libssl-dev libudev-dev pkg-config zlib1g-dev llvm clang make; \
+    apt install -y --no-install-recommends libssl-dev tzdata libudev-dev pkg-config zlib1g-dev llvm clang make; \
     cd solana; \
     cargo build --release; \
     cd .. ; \
