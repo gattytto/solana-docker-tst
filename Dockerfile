@@ -11,6 +11,7 @@ RUN rustup toolchain add $RUST_VERSION; \
     cd .. ; \
     git clone https://github.com/solana-labs/solana-program-library.git; \
     cd solana-program-library && export PATH=/solana/target/release:$PATH; \
+    rm -rf ~/.cargo/registry/* && \
     cargo build-bpf --bpf-sdk /solana/sdk/bpf && ls target -alh
     
 FROM scratch
