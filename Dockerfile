@@ -1,6 +1,8 @@
 FROM quay.io/gattytto/rust:latest as builder
 # Create appuser
 USER root
+RUN apt install -y --no-install-recommends git
+
 RUN git clone https://github.com/solana-labs/solana.git; \
     git clone https://github.com/solana-labs/solana-program-library.git; 
 
@@ -8,7 +10,7 @@ RUN rustup toolchain add $RUST_VERSION; \
     export DEBIAN_FRONTEND=noninteractive; \
     rustup component add rustfmt; \
     apt-get install -y --no-install-recommends tzdata libudev-dev; \
-    apt install -y --no-install-recommends libssl-dev libudev-dev pkg-config zlib1g-dev llvm clang make git; \
+    apt install -y --no-install-recommends libssl-dev libudev-dev pkg-config zlib1g-dev llvm clang make; \
     cd solana; \
     cargo build --release; \
     cd .. ; \
